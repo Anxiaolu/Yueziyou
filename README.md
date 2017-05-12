@@ -5,4 +5,7 @@
 然后在命令行执行：
   mvn clean package wildfly:deploy
 
+#目录结构说明
+uploadfile为后台用户上传文件目录
+
 # Yueziyou

@@ -20,6 +20,9 @@ public class Book implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
     private Integer id;
 
     private String barcode;
@@ -29,6 +32,8 @@ public class Book implements Serializable {
     private String introduction;
 
     private String name;
+
+    private String book_thum;
 
     private String press;
 
@@ -69,6 +74,14 @@ public class Book implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getBook_thum() {
+        return book_thum;
+    }
+
+    public void setBook_thum(String book_thum) {
+        this.book_thum = book_thum;
     }
 
     public String getBarcode() {
@@ -157,6 +170,15 @@ public class Book implements Serializable {
 
     public void setStockIn(StockIn stockIn) {
         this.stockIn = stockIn;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" + "id=" + id + ", barcode=" + barcode + ", "
+                + "flag=" + flag + ", introduction=" + introduction + ", "
+                + "name=" + name + ", book_thum=" + book_thum + ", "
+                + "press=" + press + ", writer=" + writer + ", "
+                + "category=" + category + ", stuff=" + stuff + '}';
     }
 
 }

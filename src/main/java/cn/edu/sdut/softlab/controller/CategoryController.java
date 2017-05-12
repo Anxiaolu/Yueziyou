@@ -21,8 +21,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import cn.edu.sdut.softlab.service.categoryFacade;
-import cn.edu.sdut.softlab.util.Utxfactory;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,9 +44,6 @@ public class CategoryController {
 
     @Inject
     private EntityManager em;
-
-    @Inject
-    Utxfactory utxfactory;
 
     @Inject
     private UserTransaction utx;
