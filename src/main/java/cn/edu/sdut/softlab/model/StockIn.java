@@ -4,163 +4,166 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
-
 /**
  * The persistent class for the stock_in database table.
- * 
+ *
  */
 @Entity
-@Table(name="stock_in")
-@NamedQuery(name="StockIn.findAll", query="SELECT s FROM StockIn s")
+@Table(name = "stock_in")
+@NamedQuery(name = "StockIn.findAll", query = "SELECT s FROM StockIn s")
 public class StockIn implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
-	private Integer id;
+    private static final long serialVersionUID = 1L;
 
-	private String barcode;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
 
-	@Column(name="book_id")
-	private Integer bookId;
+    private String barcode;
 
-	private String category;
+    @Column(name = "book_id")
+    private Integer bookId;
 
-	@Column(name="category_id")
-	private Integer categoryId;
+    private String category;
 
-	@Temporal(TemporalType.DATE)
-	private Date date;
+    @Column(name = "category_id")
+    private Integer categoryId;
 
-	@Column(name="librarion_name")
-	private String librarionName;
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
-	private String name;
+    @Column(name = "librarion_name")
+    private String librarionName;
 
-	private Integer num;
+    private String name;
 
-	@Column(name="stuff_id")
-	private Integer stuffId;
+    private Integer num;
 
-	//bi-directional one-to-one association to Book
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id")
-	private Book book;
+    @Column(name = "stuff_id")
+    private Integer stuffId;
 
-	//bi-directional one-to-one association to Category
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id")
-	private Category categoryBean;
+    //bi-directional one-to-one association to Book
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private Book book;
 
-	//bi-directional one-to-one association to Stuff
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id")
-	private Stuff stuff;
+    //bi-directional one-to-one association to Category
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private Category categoryBean;
 
-	public StockIn() {
-	}
+    //bi-directional one-to-one association to Stuff
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private Stuff stuff;
 
-	public Integer getId() {
-		return this.id;
-	}
+    public StockIn() {
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public String getBarcode() {
-		return this.barcode;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setBarcode(String barcode) {
-		this.barcode = barcode;
-	}
+    public String getBarcode() {
+        return this.barcode;
+    }
 
-	public Integer getBookId() {
-		return this.bookId;
-	}
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
 
-	public void setBookId(Integer bookId) {
-		this.bookId = bookId;
-	}
+    public Integer getBookId() {
+        return this.bookId;
+    }
 
-	public String getCategory() {
-		return this.category;
-	}
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
+    }
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+    public String getCategory() {
+        return this.category;
+    }
 
-	public Integer getCategoryId() {
-		return this.categoryId;
-	}
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
-	}
+    public Integer getCategoryId() {
+        return this.categoryId;
+    }
 
-	public Date getDate() {
-		return this.date;
-	}
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
+    public Date getDate() {
+        return this.date;
+    }
 
-	public String getLibrarionName() {
-		return this.librarionName;
-	}
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
-	public void setLibrarionName(String librarionName) {
-		this.librarionName = librarionName;
-	}
+    public String getLibrarionName() {
+        return this.librarionName;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public void setLibrarionName(String librarionName) {
+        this.librarionName = librarionName;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public Integer getNum() {
-		return this.num;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setNum(Integer num) {
-		this.num = num;
-	}
+    public Integer getNum() {
+        return this.num;
+    }
 
-	public Integer getStuffId() {
-		return this.stuffId;
-	}
+    public void setNum(Integer num) {
+        this.num = num;
+    }
 
-	public void setStuffId(Integer stuffId) {
-		this.stuffId = stuffId;
-	}
+    public Integer getStuffId() {
+        return this.stuffId;
+    }
 
-	public Book getBook() {
-		return this.book;
-	}
+    public void setStuffId(Integer stuffId) {
+        this.stuffId = stuffId;
+    }
 
-	public void setBook(Book book) {
-		this.book = book;
-	}
+    public Book getBook() {
+        return this.book;
+    }
 
-	public Category getCategoryBean() {
-		return this.categoryBean;
-	}
+    public void setBook(Book book) {
+        this.book = book;
+    }
 
-	public void setCategoryBean(Category categoryBean) {
-		this.categoryBean = categoryBean;
-	}
+    public Category getCategoryBean() {
+        return this.categoryBean;
+    }
 
-	public Stuff getStuff() {
-		return this.stuff;
-	}
+    public void setCategoryBean(Category categoryBean) {
+        this.categoryBean = categoryBean;
+    }
 
-	public void setStuff(Stuff stuff) {
-		this.stuff = stuff;
-	}
+    public Stuff getStuff() {
+        return this.stuff;
+    }
+
+    public void setStuff(Stuff stuff) {
+        this.stuff = stuff;
+    }
 
 }

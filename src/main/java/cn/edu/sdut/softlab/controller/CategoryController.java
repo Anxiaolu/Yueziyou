@@ -21,6 +21,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import cn.edu.sdut.softlab.service.categoryFacade;
+import cn.edu.sdut.softlab.util.Utxfactory;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,6 +48,9 @@ public class CategoryController {
     private EntityManager em;
 
     @Inject
+    Utxfactory utxfactory;
+
+    @Inject
     private UserTransaction utx;
 
     private Category newCategory = new Category();
@@ -59,25 +64,34 @@ public class CategoryController {
     }
 
     public String addCategory() throws Exception {
-        try {
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            utx.begin();
-            categoryService.create(newCategory);
-            //logger.log(Level.INFO, "Added {0}", newCategory);
-            return "";
-        } finally {
-            utx.commit();
+        //m.getTransaction();
+        //utx = utxfactory.getUserTransaction();
+        if (newCategory == null) {
+            System.out.println("!!!!!!");
+        } else {
+            try {
+                utx.begin();
+                categoryService.create(newCategory);
+                logger.log(Level.INFO, "Added {0}", newCategory);
+                //em.persist(newCategory);
+                //System.out.println(newCategory.toString());
+            } finally {
+                utx.commit();
+            }
         }
+        return "index.xhtml?faces-redirect=true";
     }
 
     public List<Category> getAllCategory() throws Exception {
-        try {
-            utx.begin();
-            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Category.class));
-            return em.createQuery(cq).getResultList();
-        } finally {
-            utx.commit();
+        utx.begin();
+        CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+        cq.select(cq.from(Category.class));
+        utx.commit();
+        List<Category> categorys = em.createQuery(cq).getResultList();
+        for (Category c : categorys) {
+            System.out.println(c.toString());
         }
+
+        return categorys;
     }
 }

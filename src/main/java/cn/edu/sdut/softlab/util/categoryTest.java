@@ -3,10 +3,10 @@
 // * To change this template file, choose Tools | Templates
 // * and open the template in the editor.
 // */
+//package cn.edu.sdut.softlab.util;
 //
 //import cn.edu.sdut.softlab.model.Category;
 //import cn.edu.sdut.softlab.service.categoryFacade;
-//import cn.edu.sdut.softlab.util.Utxfactory;
 //import javax.inject.Inject;
 //import javax.persistence.EntityManager;
 //import javax.transaction.UserTransaction;
@@ -35,7 +35,7 @@
 //        try {
 //            utx = utxfactory.getUserTransaction();
 //            utx.begin();
-//            categoryService.create(new Category("12312312123", "2232322"));
+//            categoryService.create(new Category(1,"1231231", "2s"));
 //        } finally {
 //            utx.commit();
 //        }

@@ -4,100 +4,103 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
-
 /**
  * The persistent class for the borrow_return_record database table.
- * 
+ *
  */
 @Entity
-@Table(name="borrow_return_record")
-@NamedQuery(name="BorrowReturnRecord.findAll", query="SELECT b FROM BorrowReturnRecord b")
+@Table(name = "borrow_return_record")
+@NamedQuery(name = "BorrowReturnRecord.findAll", query = "SELECT b FROM BorrowReturnRecord b")
 public class BorrowReturnRecord implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
-	private Integer id;
+    private static final long serialVersionUID = 1L;
 
-	@Column(name="book_id")
-	private Integer bookId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="start_time")
-	private Date startTime;
+    @Column(name = "book_id")
+    private Integer bookId;
 
-	@Column(name="stuff_id")
-	private Integer stuffId;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "start_time")
+    private Date startTime;
 
-	@Column(name="total_time")
-	private String totalTime;
+    @Column(name = "stuff_id")
+    private Integer stuffId;
 
-	//bi-directional one-to-one association to Book
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id")
-	private Book book;
+    @Column(name = "total_time")
+    private String totalTime;
 
-	//bi-directional one-to-one association to Stuff
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id")
-	private Stuff stuff;
+    //bi-directional one-to-one association to Book
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private Book book;
 
-	public BorrowReturnRecord() {
-	}
+    //bi-directional one-to-one association to Stuff
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private Stuff stuff;
 
-	public Integer getId() {
-		return this.id;
-	}
+    public BorrowReturnRecord() {
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public Integer getBookId() {
-		return this.bookId;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setBookId(Integer bookId) {
-		this.bookId = bookId;
-	}
+    public Integer getBookId() {
+        return this.bookId;
+    }
 
-	public Date getStartTime() {
-		return this.startTime;
-	}
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
+    }
 
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
+    public Date getStartTime() {
+        return this.startTime;
+    }
 
-	public Integer getStuffId() {
-		return this.stuffId;
-	}
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
 
-	public void setStuffId(Integer stuffId) {
-		this.stuffId = stuffId;
-	}
+    public Integer getStuffId() {
+        return this.stuffId;
+    }
 
-	public String getTotalTime() {
-		return this.totalTime;
-	}
+    public void setStuffId(Integer stuffId) {
+        this.stuffId = stuffId;
+    }
 
-	public void setTotalTime(String totalTime) {
-		this.totalTime = totalTime;
-	}
+    public String getTotalTime() {
+        return this.totalTime;
+    }
 
-	public Book getBook() {
-		return this.book;
-	}
+    public void setTotalTime(String totalTime) {
+        this.totalTime = totalTime;
+    }
 
-	public void setBook(Book book) {
-		this.book = book;
-	}
+    public Book getBook() {
+        return this.book;
+    }
 
-	public Stuff getStuff() {
-		return this.stuff;
-	}
+    public void setBook(Book book) {
+        this.book = book;
+    }
 
-	public void setStuff(Stuff stuff) {
-		this.stuff = stuff;
-	}
+    public Stuff getStuff() {
+        return this.stuff;
+    }
+
+    public void setStuff(Stuff stuff) {
+        this.stuff = stuff;
+    }
 
 }

@@ -4,87 +4,90 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
-
 /**
  * The persistent class for the account database table.
- * 
+ *
  */
 @Entity
-@NamedQuery(name="Account.findAll", query="SELECT a FROM Account a")
+@NamedQuery(name = "Account.findAll", query = "SELECT a FROM Account a")
 public class Account implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
-	@SequenceGenerator(name="ACCOUNT_ID_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ACCOUNT_ID_GENERATOR")
-	private Integer id;
+    private static final long serialVersionUID = 1L;
 
-	@Column(name="book_type")
-	private String bookType;
+    @Id
+    @SequenceGenerator(name = "ACCOUNT_ID_GENERATOR")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_ID_GENERATOR")
 
-	private String flag;
+    @Basic(optional = false)
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="time_check")
-	private Date timeCheck;
+    private Integer id;
 
-	//bi-directional many-to-one association to Book
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Book book;
+    @Column(name = "book_type")
+    private String bookType;
 
-	//bi-directional many-to-one association to Stuff
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Stuff stuff;
+    private String flag;
 
-	public Account() {
-	}
+    @Temporal(TemporalType.DATE)
+    @Column(name = "time_check")
+    private Date timeCheck;
 
-	public Integer getId() {
-		return this.id;
-	}
+    //bi-directional many-to-one association to Book
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Book book;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    //bi-directional many-to-one association to Stuff
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Stuff stuff;
 
-	public String getBookType() {
-		return this.bookType;
-	}
+    public Account() {
+    }
 
-	public void setBookType(String bookType) {
-		this.bookType = bookType;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public String getFlag() {
-		return this.flag;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setFlag(String flag) {
-		this.flag = flag;
-	}
+    public String getBookType() {
+        return this.bookType;
+    }
 
-	public Date getTimeCheck() {
-		return this.timeCheck;
-	}
+    public void setBookType(String bookType) {
+        this.bookType = bookType;
+    }
 
-	public void setTimeCheck(Date timeCheck) {
-		this.timeCheck = timeCheck;
-	}
+    public String getFlag() {
+        return this.flag;
+    }
 
-	public Book getBook() {
-		return this.book;
-	}
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
 
-	public void setBook(Book book) {
-		this.book = book;
-	}
+    public Date getTimeCheck() {
+        return this.timeCheck;
+    }
 
-	public Stuff getStuff() {
-		return this.stuff;
-	}
+    public void setTimeCheck(Date timeCheck) {
+        this.timeCheck = timeCheck;
+    }
 
-	public void setStuff(Stuff stuff) {
-		this.stuff = stuff;
-	}
+    public Book getBook() {
+        return this.book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public Stuff getStuff() {
+        return this.stuff;
+    }
+
+    public void setStuff(Stuff stuff) {
+        this.stuff = stuff;
+    }
 
 }

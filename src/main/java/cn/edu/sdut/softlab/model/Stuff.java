@@ -4,197 +4,200 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Set;
 
-
 /**
  * The persistent class for the stuff database table.
- * 
+ *
  */
 @Entity
-@NamedQuery(name="Stuff.findAll", query="SELECT s FROM Stuff s")
+@NamedQuery(name = "Stuff.findAll", query = "SELECT s FROM Stuff s")
 public class Stuff implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
-	private Integer id;
+    private static final long serialVersionUID = 1L;
 
-	private String college;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
 
-	private String email;
+    private String college;
 
-	private String identity;
+    private String email;
 
-	private String major;
+    private String identity;
 
-	private String name;
+    private String major;
 
-	private String password;
+    private String name;
 
-	@Column(name="phone_num")
-	private String phoneNum;
+    private String password;
 
-	@Column(name="real_name")
-	private String realName;
+    @Column(name = "phone_num")
+    private String phoneNum;
 
-	@Column(name="stu_no")
-	private Integer stuNo;
+    @Column(name = "real_name")
+    private String realName;
 
-	//bi-directional many-to-one association to Book
-	@OneToMany(mappedBy="stuff")
-	private Set<Book> accounts;
+    @Column(name = "stu_no")
+    private Integer stuNo;
 
-	//bi-directional many-to-one association to Book
-	@OneToMany(mappedBy="stuff")
-	private Set<Book> books;
+    //bi-directional many-to-one association to Book
+    @OneToMany(mappedBy = "stuff")
+    private Set<Book> accounts;
 
-	//bi-directional one-to-one association to BorrowReturnRecord
-	@OneToOne(mappedBy="stuff", fetch=FetchType.LAZY)
-	private BorrowReturnRecord borrowReturnRecord;
+    //bi-directional many-to-one association to Book
+    @OneToMany(mappedBy = "stuff")
+    private Set<Book> books;
 
-	//bi-directional one-to-one association to StockIn
-	@OneToOne(mappedBy="stuff", fetch=FetchType.LAZY)
-	private StockIn stockIn;
+    //bi-directional one-to-one association to BorrowReturnRecord
+    @OneToOne(mappedBy = "stuff", fetch = FetchType.LAZY)
+    private BorrowReturnRecord borrowReturnRecord;
 
-	public Stuff() {
-	}
+    //bi-directional one-to-one association to StockIn
+    @OneToOne(mappedBy = "stuff", fetch = FetchType.LAZY)
+    private StockIn stockIn;
 
-	public Integer getId() {
-		return this.id;
-	}
+    public Stuff() {
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public String getCollege() {
-		return this.college;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setCollege(String college) {
-		this.college = college;
-	}
+    public String getCollege() {
+        return this.college;
+    }
 
-	public String getEmail() {
-		return this.email;
-	}
+    public void setCollege(String college) {
+        this.college = college;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return this.email;
+    }
 
-	public String getIdentity() {
-		return this.identity;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setIdentity(String identity) {
-		this.identity = identity;
-	}
+    public String getIdentity() {
+        return this.identity;
+    }
 
-	public String getMajor() {
-		return this.major;
-	}
+    public void setIdentity(String identity) {
+        this.identity = identity;
+    }
 
-	public void setMajor(String major) {
-		this.major = major;
-	}
+    public String getMajor() {
+        return this.major;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public void setMajor(String major) {
+        this.major = major;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public String getPassword() {
-		return this.password;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getPassword() {
+        return this.password;
+    }
 
-	public String getPhoneNum() {
-		return this.phoneNum;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setPhoneNum(String phoneNum) {
-		this.phoneNum = phoneNum;
-	}
+    public String getPhoneNum() {
+        return this.phoneNum;
+    }
 
-	public String getRealName() {
-		return this.realName;
-	}
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
 
-	public void setRealName(String realName) {
-		this.realName = realName;
-	}
+    public String getRealName() {
+        return this.realName;
+    }
 
-	public Integer getStuNo() {
-		return this.stuNo;
-	}
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
 
-	public void setStuNo(Integer stuNo) {
-		this.stuNo = stuNo;
-	}
+    public Integer getStuNo() {
+        return this.stuNo;
+    }
 
-	public Set<Book> getAccounts() {
-		return this.accounts;
-	}
+    public void setStuNo(Integer stuNo) {
+        this.stuNo = stuNo;
+    }
 
-	public void setAccounts(Set<Book> accounts) {
-		this.accounts = accounts;
-	}
+    public Set<Book> getAccounts() {
+        return this.accounts;
+    }
 
-	public Book addAccount(Book account) {
-		getAccounts().add(account);
-		account.setStuff(this);
+    public void setAccounts(Set<Book> accounts) {
+        this.accounts = accounts;
+    }
 
-		return account;
-	}
+    public Book addAccount(Book account) {
+        getAccounts().add(account);
+        account.setStuff(this);
 
-	public Book removeAccount(Book account) {
-		getAccounts().remove(account);
-		account.setStuff(null);
+        return account;
+    }
 
-		return account;
-	}
+    public Book removeAccount(Book account) {
+        getAccounts().remove(account);
+        account.setStuff(null);
 
-	public Set<Book> getBooks() {
-		return this.books;
-	}
+        return account;
+    }
 
-	public void setBooks(Set<Book> books) {
-		this.books = books;
-	}
+    public Set<Book> getBooks() {
+        return this.books;
+    }
 
-	public Book addBook(Book book) {
-		getBooks().add(book);
-		book.setStuff(this);
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
 
-		return book;
-	}
+    public Book addBook(Book book) {
+        getBooks().add(book);
+        book.setStuff(this);
 
-	public Book removeBook(Book book) {
-		getBooks().remove(book);
-		book.setStuff(null);
+        return book;
+    }
 
-		return book;
-	}
+    public Book removeBook(Book book) {
+        getBooks().remove(book);
+        book.setStuff(null);
 
-	public BorrowReturnRecord getBorrowReturnRecord() {
-		return this.borrowReturnRecord;
-	}
+        return book;
+    }
 
-	public void setBorrowReturnRecord(BorrowReturnRecord borrowReturnRecord) {
-		this.borrowReturnRecord = borrowReturnRecord;
-	}
+    public BorrowReturnRecord getBorrowReturnRecord() {
+        return this.borrowReturnRecord;
+    }
 
-	public StockIn getStockIn() {
-		return this.stockIn;
-	}
+    public void setBorrowReturnRecord(BorrowReturnRecord borrowReturnRecord) {
+        this.borrowReturnRecord = borrowReturnRecord;
+    }
 
-	public void setStockIn(StockIn stockIn) {
-		this.stockIn = stockIn;
-	}
+    public StockIn getStockIn() {
+        return this.stockIn;
+    }
+
+    public void setStockIn(StockIn stockIn) {
+        this.stockIn = stockIn;
+    }
 
 }

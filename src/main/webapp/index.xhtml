@@ -18,9 +18,9 @@ and open the template in the editor.
     <h:body>
         <div>TODO write content</div>
         <h:form style="margin: 0 auto;">
-            <p:inputText value="#{categoryManager.newCategory.barcode}" /><br/>
-            <p:inputText value="#{categoryManager.newCategory.name}" /><br/>
-            <p:commandButton action="#{categoryManager.addCategory}"
+            <h:inputText value="#{categoryManager.newCategory.barcode}"/>
+            <h:inputText value="#{categoryManager.newCategory.name}"/>
+            <h:commandButton action="#{categoryManager.addCategory}"
                              value="Add Category" />
         </h:form>
     </h:body>
