@@ -59,8 +59,6 @@ public class CategoryController {
     }
 
     public String addCategory() throws Exception {
-        //m.getTransaction();
-        //utx = utxfactory.getUserTransaction();
         if (newCategory == null) {
             System.out.println("!!!!!!");
         } else {
@@ -68,8 +66,6 @@ public class CategoryController {
                 utx.begin();
                 categoryService.create(newCategory);
                 logger.log(Level.INFO, "Added {0}", newCategory);
-                //em.persist(newCategory);
-                //System.out.println(newCategory.toString());
             } finally {
                 utx.commit();
             }
