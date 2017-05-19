@@ -54,13 +54,21 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.13</version>
         </dependency>
-		<!--primefaces-->
+        
+        <!--primefaces-->
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>6.0</version>
         </dependency>
         
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        
+        <!--本地依赖 weichat4j包-->
         <dependency>
             <groupId>cn.edu.sdut.softlab.YZY</groupId>
             <artifactId>YZY</artifactId>
@@ -96,7 +104,7 @@
             </plugin>
 
             <!-- checkstyle -->
-<!--            <plugin>
+            <!--            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>2.17</version>
@@ -120,7 +128,7 @@
             </plugin>-->
 
             <!-- pmd -->
-<!--           <plugin>
+            <!--           <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.6</version>
