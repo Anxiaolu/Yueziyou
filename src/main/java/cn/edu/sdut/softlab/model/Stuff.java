@@ -3,13 +3,21 @@ package cn.edu.sdut.softlab.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Set;
+import javax.faces.bean.ManagedBean;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * The persistent class for the stuff database table.
  *
  */
+@ManagedBean(name = "Stuff")
+@Table(name = "stuff")
 @Entity
-@NamedQuery(name = "Stuff.findAll", query = "SELECT s FROM Stuff s")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Stuff.findAll", query = "SELECT s FROM Stuff s") ,
+    @NamedQuery(name = "Stuff.findById", query = "SELECT s FROM Stuff s WHERE s.id = :id")
+    })   
 public class Stuff implements Serializable {
 
     private static final long serialVersionUID = 1L;
