@@ -24,7 +24,7 @@
             <version>2.1.9</version>  
         </dependency>  
 
-		<!-- 这个为xappol即XaDatasource的一个开源实现 -->  
+        <!-- 这个为xappol即XaDatasource的一个开源实现 -->  
         <dependency>  
             <groupId>com.experlog</groupId>  
             <artifactId>xapool</artifactId>  
@@ -313,7 +313,24 @@
                     <failOnViolation>true</failOnViolation>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <!-- 此为管理员路径，不是部署路径 -->
+                    <url>http://localhost:8080/manager/text</url>
+                    <uriEncoding>utf-8</uriEncoding>
+                    <!-- <update>true</update>
+                    <server>tomcat</server>-->
+                    <!-- 此处为服务器上的用户名和密码，早tomcat-user里设置 -->
+                    <!-- 格式如 <role rolename="tomcat"/> <role rolename="manager"/> <role 
+                    rolename="admin"/> <role rolename="manager-gui"/> <role rolename="manager-script"/> 
+                    <user username="admin" password="admin" roles="tomcat，manager,admin,manager-gui,manager-script"/> -->
+                    <username>admin</username>
+                    <password>admin</password>
+                </configuration>
+            </plugin>
         </plugins>
     </reporting>
 

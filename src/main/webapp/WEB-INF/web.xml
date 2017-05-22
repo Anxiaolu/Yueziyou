@@ -22,14 +22,13 @@
     </servlet>
     
     <servlet>
-        <display-name>WeChatServlet</display-name>
-        <servlet-name>WeChatServlet</servlet-name>
+        <servlet-name>WeChatServlet</servlet-name>  
         <servlet-class>cn.edu.sdut.softlab.servlet.WeChatServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>WeChatSerlvet</servlet-name>
-        <url-pattern>/Yueziyou</url-pattern>
+        <url-pattern>/wx.do</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
